@@ -1,0 +1,14 @@
+services:
+  entellord:
+    build:
+      context: ..
+      dockerfile: entellord/Dockerfile
+    image: entellord:latest
+    container_name: entellord
+    env_file:
+      - ./.env
+    environment:
+      GALLERY_DL_CONFIG: /app/config/gallery-dl.conf
+    volumes:
+      - ../config:/app/config:ro
+    restart: unless-stopped
