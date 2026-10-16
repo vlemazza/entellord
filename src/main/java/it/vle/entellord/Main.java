@@ -1,7 +1,7 @@
 package it.vle.entellord;
 
 import it.vle.entellocore.service.ContentExtractionEngine;
-import it.vle.entellocore.service.EntelloExtractorEngine;
+import it.vle.entellocore.service.EntelloContentExtractionEngine;
 import it.vle.entellord.presentation.DiscordMessageMapper;
 import it.vle.entellord.listener.MessageReceiveListener;
 import it.vle.entellord.service.DiscordService;
@@ -28,7 +28,7 @@ public class Main {
 
         String token = System.getenv("DISCORD_TOKEN");
 
-        ContentExtractionEngine extractionEngine = new EntelloExtractorEngine();
+        ContentExtractionEngine extractionEngine = new EntelloContentExtractionEngine();
 
         DiscordMessageMapper messageMapper = new DiscordMessageMapper();
 
