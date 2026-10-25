@@ -4,7 +4,9 @@
             "text-tweets": true
         },
         "tiktok": {
-            "cookies": "/app/config/gallery-dl.conf/session/tiktok_cookies.txt"
+            "cookies": "/app/config/gallery-dl.conf/session/tiktok_cookies.txt",
+            "audio": "ytdl",
+            "videos": "ytdl"
         },
         "instagram": {
             "cookies": "/app/config/gallery-dl.conf/session/instagram_cookies.txt",
