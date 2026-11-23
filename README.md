@@ -42,12 +42,13 @@ The directory structure should be similar to the following:
 
 ```text
 .
+├── config/
+│   ├── gallery-dl.conf
+│   └── session/
 ├── entellocore/
 │   ├── pom.xml
 │   └── src/
 └── entellord/
-    ├── config/
-    │   └── session/
     ├── pom.xml
     ├── Dockerfile
     └── docker-compose.yaml
@@ -57,12 +58,13 @@ The directory structure should be similar to the following:
 
 Some platforms require authentication cookies to retrieve posts and media. Entellord uses `gallery-dl` configuration to specify the cookie files and other platform-specific settings.
 
-Export the cookies from your browser in Netscape format in this directory.
+Create `config/session/` in the shared parent directory and export the cookies from your browser in Netscape format there.
 
 The [Export Cookies](https://github.com/rotemdan/ExportCookies) browser extension can be used to export cookies in a compatible format.
 
 ```text
-entellord/config/session/
+config/session/
+├── facebook_cookies.txt
 ├── instagram_cookies.txt
 ├── tiktok_cookies.txt
 └── reddit_cookies.txt
@@ -72,9 +74,9 @@ The actual filenames must match the paths specified in the `gallery-dl.conf` con
 
 ### 3. Configure gallery-dl
 
-Rename `gallery-dl.conf.example` in `gallery-dl.conf`.
+Copy `entellord/config/gallery-dl.conf.example` to `config/gallery-dl.conf`.
 
-If you intend to use Docker, leave the path unchanged.
+The Docker configuration uses `/app/config/session/` paths, matching the `config/` directory mounted by `docker-compose.yaml`.
 
 ```json
 {
@@ -82,15 +84,18 @@ If you intend to use Docker, leave the path unchanged.
     "twitter": {
       "text-tweets": true
     },
+    "facebook": {
+      "cookies": "/app/config/session/facebook_cookies.txt"
+    },
     "tiktok": {
-      "cookies": "/app/config/gallery-dl.conf/session/tiktok_cookies.txt"
+      "cookies": "/app/config/session/tiktok_cookies.txt"
     },
     "instagram": {
-      "cookies": "/app/config/gallery-dl.conf/session/instagram_cookies.txt",
+      "cookies": "/app/config/session/instagram_cookies.txt"
     },
     "reddit": {
       "refresh-token": "<<TOKEN>>",
-      "cookies": "/app/config/gallery-dl.conf/session/cookies-reddit-com.txt"
+      "cookies": "/app/config/session/reddit_cookies.txt"
     },
     "pixiv": {
       "refresh-token": "<<TOKEN>>"

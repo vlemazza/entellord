@@ -3,17 +3,20 @@
         "twitter": {
             "text-tweets": true
         },
+        "facebook": {
+            "cookies": "/app/config/session/facebook_cookies.txt"
+        },
         "tiktok": {
-            "cookies": "/app/config/gallery-dl.conf/session/tiktok_cookies.txt",
+            "cookies": "/app/config/session/tiktok_cookies.txt",
             "audio": "ytdl",
             "videos": "ytdl"
         },
         "instagram": {
-            "cookies": "/app/config/gallery-dl.conf/session/instagram_cookies.txt",
+            "cookies": "/app/config/session/instagram_cookies.txt"
         },
         "reddit": {
             "refresh-token": "<<TOKEN>>",
-            "cookies": "/app/config/gallery-dl.conf/session/cookies-reddit-com.txt"
+            "cookies": "/app/config/session/cookies-reddit-com.txt"
         },
         "pixiv": {
             "refresh-token": "<<TOKEN>>"

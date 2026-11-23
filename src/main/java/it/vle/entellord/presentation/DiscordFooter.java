@@ -10,6 +10,8 @@ record DiscordFooter(String text, String iconUrl) {
             Map.ofEntries(
                     Map.entry(ExtractedPostTwitter.class,
                             new DiscordFooter("Twitter", "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/refs/heads/main/png/twitter.png")),
+                    Map.entry(ExtractedPostFacebook.class,
+                            new DiscordFooter("Facebook", "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/refs/heads/main/png/facebook.png")),
                     Map.entry(ExtractedPostBluesky.class,
                             new DiscordFooter("Bluesky", "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/refs/heads/main/png/bluesky.png")),
                     Map.entry(ExtractedPostTiktok.class,
