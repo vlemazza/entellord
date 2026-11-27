@@ -8,7 +8,7 @@ services:
     env_file:
       - ./.env
     environment:
-      GALLERY_DL_CONFIG: /app/config/gallery-dl.conf
+      GALLERY_DL_CONFIG: ${GALLERY_DL_CONFIG:-/app/config/gallery-dl.conf}
     volumes:
       - ../config:/app/config:ro
     restart: unless-stopped

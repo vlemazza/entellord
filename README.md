@@ -66,49 +66,25 @@ The [Export Cookies](https://github.com/rotemdan/ExportCookies) browser extensio
 config/session/
 ├── facebook_cookies.txt
 ├── instagram_cookies.txt
-├── tiktok_cookies.txt
-└── reddit_cookies.txt
+└── tiktok_cookies.txt
 ```
 
 The actual filenames must match the paths specified in the `gallery-dl.conf` configuration.
 
 ### 3. Configure gallery-dl
 
-Copy `entellord/config/gallery-dl.conf.example` to `config/gallery-dl.conf`.
+If `config/gallery-dl.conf` does not already exist, create it from EntelloCore's shared template:
+
+```bash
+cp entellocore/config/gallery-dl.conf.example config/gallery-dl.conf
+```
+
+Keep the runtime config and session cookies in the shared parent `config/` directory. Entellogram's meme and random-reply files remain in its own `config/`; the extraction process reads Gallery-dl configuration and cookies only from the shared parent directory.
 
 The Docker configuration uses `/app/config/session/` paths, matching the `config/` directory mounted by `docker-compose.yaml`.
 
-```json
-{
-  "extractor": {
-    "twitter": {
-      "text-tweets": true
-    },
-    "facebook": {
-      "cookies": "/app/config/session/facebook_cookies.txt"
-    },
-    "tiktok": {
-      "cookies": "/app/config/session/tiktok_cookies.txt"
-    },
-    "instagram": {
-      "cookies": "/app/config/session/instagram_cookies.txt"
-    },
-    "reddit": {
-      "refresh-token": "<<TOKEN>>",
-      "cookies": "/app/config/session/reddit_cookies.txt"
-    },
-    "pixiv": {
-      "refresh-token": "<<TOKEN>>"
-    },
-    "tumblr": {
-      "api-key": "<<TOKEN>>",
-      "api-secret": "<<TOKEN>>"
-    }
-  }
-}
-```
+The template already uses the container paths expected by both applications. Update its credential placeholders and cookie filenames in the shared runtime config.
 
-Replace the placeholder values with your actual credentials and configure the platforms you intend to use.
 
 ### 4. Configure the Discord bot token
 
